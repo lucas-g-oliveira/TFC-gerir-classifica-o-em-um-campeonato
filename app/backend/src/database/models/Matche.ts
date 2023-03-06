@@ -48,3 +48,5 @@ Matche.init(
     timestamps: false,
   },
 );
+
+export default Matche;
