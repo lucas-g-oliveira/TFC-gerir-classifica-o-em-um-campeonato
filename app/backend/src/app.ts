@@ -1,4 +1,5 @@
 import * as express from 'express';
+import matcheRoutes from './api/controllers/routes/MatcheRoutes';
 import teamRoutes from './api/controllers/routes/TeamRoutes';
 
 class App {
@@ -26,6 +27,7 @@ class App {
   }
 
   private initRoutes(): void {
+    this.app.use(matcheRoutes);
     this.app.use(teamRoutes);
   }
 
