@@ -24,6 +24,7 @@ export default class MatchService implements IServiceMatche {
       where: { inProgress },
       include: [
         { model: Team, as: 'homeTeam' },
+        { model: Team, as: 'awayTeam' },
       ],
     });
 
