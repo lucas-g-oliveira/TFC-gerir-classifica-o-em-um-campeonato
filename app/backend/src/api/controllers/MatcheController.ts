@@ -8,14 +8,13 @@ class MatchController {
     this._service = service;
   }
 
-  async readAll(req: Request, res:Response) {
-    const data = await this._service.readAll();
-    return res.status(200).json(data);
-  }
-
-  async readById(req: Request, res:Response) {
-    const { id } = req.params;
-    const data = await this._service.readById(parseInt(id, 10));
+  async readMatch(req: Request, res:Response) {
+    let data;
+    if (Object.keys(req.query)[0] === 'inProgress') {
+      data = await this._service.readByProgress(req.query.inProgress === 'true');
+    } else {
+      data = await this._service.readAll();
+    }
     return res.status(200).json(data);
   }
 }

@@ -19,9 +19,9 @@ export default class MatchService implements IServiceMatche {
     return data;
   }
 
-  async readById(id: number): Promise<Matche | IErrorService> {
-    const data = await this.model.findOne({
-      where: { id },
+  async readByProgress(inProgress: boolean): Promise<Matche[] | IErrorService> {
+    const data = await this.model.findAll({
+      where: { inProgress },
       include: [
         { model: Team, as: 'homeTeam' },
       ],

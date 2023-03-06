@@ -4,5 +4,5 @@ import IErrorService from './IErrorService';
 
 export default interface IServiceMatche {
   readAll(): Promise<Matche[]>;
-  readById(id:number): Promise<Matche | IErrorService>
+  readByProgress(inProgress: boolean): Promise<Matche[] | IErrorService>
 }

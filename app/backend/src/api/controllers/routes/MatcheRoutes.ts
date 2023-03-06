@@ -8,7 +8,7 @@ const matcheController = new MatcheController(matcheService);
 
 matcheRoutes.get(
   '/matches',
-  (req: Request, res: Response) => matcheController.readAll(req, res),
+  (req: Request, res: Response) => matcheController.readMatch(req, res),
 );
 
 export default matcheRoutes;
