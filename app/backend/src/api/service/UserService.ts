@@ -7,7 +7,7 @@ import IUserLogin from '../interfaces/IUserLogin';
 
 const ID_NOT_FOUND = 'ID não existe';
 
-export default class TeamService implements IServiceUser {
+export default class UserService implements IServiceUser {
   protected model: ModelStatic<User> = User;
 
   async checkUser(user: IUserLogin): Promise<IErrorService | IUserCrededential> {
