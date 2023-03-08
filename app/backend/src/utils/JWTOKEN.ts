@@ -8,7 +8,6 @@ const secret = process.env.JWT_SECRET || 'CHAVE-ULTRA-SECRET4';
 
 export default class JWTOKEN {
   public static encript(data:object) {
-    console.log(secret);
     try {
       return sign(data, secret);
     } catch (err) {

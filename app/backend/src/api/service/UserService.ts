@@ -13,10 +13,15 @@ export default class UserService implements IServiceUser {
 
   async logIn(user: IUserLogin): Promise<IErrorService | IUserCrededential> {
     const { email, password } = user;
+    console.log(user);
     const data = await this.model.findOne({ where: { email } });
+
     if (!data) return ({ code: 401, message: invalidEmailOrPassword, error: true });
+
     const testPass = await BCRYPT.test(password, data.password);
-    if (!testPass) return ({ code: 400, message: invalidEmailOrPassword, error: true });
+
+    if (!testPass) return ({ code: 401, message: invalidEmailOrPassword, error: true });
+
     return { id: data.id, email: data.email, error: false } as IUserCrededential;
   }
 }

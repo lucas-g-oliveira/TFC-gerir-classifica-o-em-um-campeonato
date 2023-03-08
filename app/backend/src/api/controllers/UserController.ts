@@ -11,7 +11,9 @@ export default class UserController {
 
   async logIn(req:Request, res: Response) {
     const data = await this._service.logIn(req.body);
-    if (data.error) { return res.status(data.code).json({ message: data.message }); }
+    if (data.error) {
+      return res.status(401).json({ message: data.message });
+    }
     const encrypt = JWTOKEN.encript(data);
     return res.status(200).json({ token: encrypt });
   }
