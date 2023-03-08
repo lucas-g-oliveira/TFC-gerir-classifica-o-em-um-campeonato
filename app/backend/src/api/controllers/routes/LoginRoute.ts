@@ -10,7 +10,7 @@ const userController = new UserController(userService);
 userRoutes.post(
   '/login',
   Middlawares.loginArgsValidate,
-  (req: Request, res: Response) => userController.checkCredential(req, res),
+  (req: Request, res: Response) => userController.logIn(req, res),
 );
 
 export default userRoutes;

@@ -4,16 +4,19 @@ import IErrorService from '../interfaces/IErrorService';
 import IServiceUser from '../interfaces/IServiceUser';
 import IUserCrededential from '../interfaces/IUserCredential';
 import IUserLogin from '../interfaces/IUserLogin';
+import BCRYPT from '../../utils/BCRYPT';
 
-const ID_NOT_FOUND = 'ID não existe';
+const invalidEmailOrPassword = 'Invalid email or password';
 
 export default class UserService implements IServiceUser {
   protected model: ModelStatic<User> = User;
 
-  async checkUser(user: IUserLogin): Promise<IErrorService | IUserCrededential> {
+  async logIn(user: IUserLogin): Promise<IErrorService | IUserCrededential> {
     const { email, password } = user;
-    const data = await this.model.findOne({ where: { email, password } });
-    if (!data) return { code: 404, message: ID_NOT_FOUND };
-    return { id: data.id, email: data.email } as IUserCrededential;
+    const data = await this.model.findOne({ where: { email } });
+    if (!data) return ({ code: 401, message: invalidEmailOrPassword, error: true });
+    const testPass = await BCRYPT.test(password, data.password);
+    if (!testPass) return ({ code: 400, message: invalidEmailOrPassword, error: true });
+    return { id: data.id, email: data.email, error: false } as IUserCrededential;
   }
 }

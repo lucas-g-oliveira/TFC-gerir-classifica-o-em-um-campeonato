@@ -28,7 +28,7 @@ export default class MatchService implements IServiceMatche {
       ],
     });
 
-    if (!data) return { code: 404, message: ID_NOT_FOUND };
-    return data;
+    if (!data) return { code: 404, message: ID_NOT_FOUND, error: true } as IErrorService;
+    return data as Matche[];
   }
 }

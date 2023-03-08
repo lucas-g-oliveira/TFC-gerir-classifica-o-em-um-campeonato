@@ -4,5 +4,5 @@ import IUserCrededential from './IUserCredential';
 import IUserLogin from './IUserLogin';
 
 export default interface IServiceUser {
-  checkUser(user: IUserLogin): Promise<IUserCrededential | IErrorService>
+  logIn(user: IUserLogin): Promise<IUserCrededential | IErrorService>
 }

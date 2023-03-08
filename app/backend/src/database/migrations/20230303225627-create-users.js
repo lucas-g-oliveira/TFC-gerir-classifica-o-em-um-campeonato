@@ -37,6 +37,6 @@ module.exports = {
   },
 
   down: async (queryInterface, _) => {
-    await queryInterface.dropTable('matches');
+    await queryInterface.dropTable('users');
   }
 };

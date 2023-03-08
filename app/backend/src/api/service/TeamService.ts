@@ -10,12 +10,12 @@ export default class TeamService implements IServiceTeam {
 
   async readAll(): Promise<Team[]> {
     const data = await this.model.findAll();
-    return data;
+    return data as Team[];
   }
 
   async readById(id: number): Promise<Team | IErrorService> {
     const data = await this.model.findOne({ where: { id } });
-    if (!data) return { code: 404, message: ID_NOT_FOUND };
-    return data;
+    if (!data) return { code: 404, message: ID_NOT_FOUND, error: true };
+    return data as Team;
   }
 }
