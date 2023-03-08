@@ -1,5 +1,5 @@
 import * as express from 'express';
-import userRoutes from './api/controllers/routes/LoginRoute';
+import userRoutes from './api/controllers/routes/UserRoutes';
 import matcheRoutes from './api/controllers/routes/MatcheRoutes';
 import teamRoutes from './api/controllers/routes/TeamRoutes';
 

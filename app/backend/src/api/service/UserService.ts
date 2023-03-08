@@ -12,15 +12,19 @@ export default class UserService implements IServiceUser {
   protected model: ModelStatic<User> = User;
 
   async logIn(user: IUserLogin): Promise<IErrorService | IUserCrededential> {
+    const errorResult:IErrorService = { code: 401, message: invalidEmailOrPassword, error: true };
     const { email, password } = user;
-    console.log(user);
-    const data = await this.model.findOne({ where: { email } });
 
-    if (!data) return ({ code: 401, message: invalidEmailOrPassword, error: true });
+    if (password.length < 6) return errorResult;
+
+    const testRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2})?$/;
+    if (!testRegEx.test(email)) return errorResult;
+
+    const data = await this.model.findOne({ where: { email } });
+    if (!data) return errorResult;
 
     const testPass = await BCRYPT.test(password, data.password);
-
-    if (!testPass) return ({ code: 401, message: invalidEmailOrPassword, error: true });
+    if (!testPass) return (errorResult);
 
     return { id: data.id, email: data.email, error: false } as IUserCrededential;
   }
