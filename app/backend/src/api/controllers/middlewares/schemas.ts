@@ -1,4 +1,4 @@
-import Joi = require('joi');
+import Joi from 'joi';
 
 const loginParamsValidate = Joi.object().keys({
   email: Joi.string().required(),
