@@ -5,4 +5,5 @@ import IUserLogin from './IUserLogin';
 
 export default interface IServiceUser {
   logIn(user: IUserLogin): Promise<IUserCrededential | IErrorService>
+  getHole(id: number):Promise<string>;
 }

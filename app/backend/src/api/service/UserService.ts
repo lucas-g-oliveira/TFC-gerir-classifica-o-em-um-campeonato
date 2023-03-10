@@ -28,4 +28,12 @@ export default class UserService implements IServiceUser {
 
     return { id: data.id, email: data.email, error: false } as IUserCrededential;
   }
+
+  async getHole(id: number):Promise<string> {
+    const data = await this.model.findByPk(id);
+    if (data) {
+      return data.role;
+    }
+    return 'null';
+  }
 }

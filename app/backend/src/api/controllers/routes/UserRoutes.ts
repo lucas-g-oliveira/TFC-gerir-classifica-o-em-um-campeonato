@@ -13,4 +13,10 @@ userRoutes.post(
   (req: Request, res: Response) => userController.logIn(req, res),
 );
 
+userRoutes.get(
+  '/login/role',
+  Middlawares.tokenValidate,
+  (req: Request, res: Response) => userController.getHole(req, res),
+);
+
 export default userRoutes;

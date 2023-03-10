@@ -15,13 +15,13 @@ export default class JWTOKEN {
     }
   }
 
-  public static decript(token:string | undefined):IAuth {
-    if (!token) return { iat: 0, id: null, username: 'Token not found' };
+  public static decript(token:string | undefined) {
+    if (!token) return { iat: 0, id: null, username: 'Token not found' } as IAuth;
     try {
       const data = verify(token, secret);
       return data as IAuth;
     } catch (err) {
-      return { iat: 0, id: null, username: 'Invalid token' };
+      return { iat: 0, id: null, username: 'Token must be a valid token' } as IAuth;
     }
   }
 }

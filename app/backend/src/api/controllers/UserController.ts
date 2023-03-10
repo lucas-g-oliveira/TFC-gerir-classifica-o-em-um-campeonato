@@ -19,10 +19,14 @@ export default class UserController {
     return res.status(200).json({ token: encrypt });
   }
 
-/*   async signIn(_req: Request, res: Response) {
-    // as keys e valores já devem estar validados pelo middllware
-    // critografar o password e salvar tudo no bd
-    // esperar o id e encryptar junto com o email e retornar
+  /* signIn(req: Request, res: Response) {
+    console.log(req.body);
     return res.status(201).json({ route: 'signIn' });
   } */
+
+  async getHole(req:Request, res: Response) {
+    console.log(req.body);
+    const data = await this._service.getHole(req.body.id);
+    return res.status(200).json({ role: data });
+  }
 }
