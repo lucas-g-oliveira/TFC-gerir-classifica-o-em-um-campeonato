@@ -33,6 +33,18 @@ class MatchController {
     const dataError = data as IErrorService;
     return res.status(dataError.code).json({ message: dataError.message });
   }
+
+  async finishMatch(req:Request, res:Response) {
+    const { id } = req.params;
+    const data = await this._service.finishMatch(parseInt(id, 10));
+    if (data) return res.status(200).json({ message: 'Finished' });
+  }
+
+  async updateMatch(req:Request, res:Response) {
+    const { id } = req.params;
+    const data = await this._service.updateMatch(parseInt(id, 10), req.body);
+    if (data) return res.status(200).json({ message: 'Updated' });
+  }
 }
 
 export default MatchController;

@@ -5,6 +5,7 @@ import IErrorService from '../interfaces/IErrorService';
 import IServiceMatche from '../interfaces/IServiceMatche';
 import IAddNewMatch from '../interfaces/IAddNewMatch';
 import IServiceTeam from '../interfaces/IServiceTeam';
+import ISetGoals from '../interfaces/ISetGoals';
 
 const ID_NOT_FOUND = 'ID não existe';
 
@@ -37,7 +38,6 @@ export default class MatchService implements IServiceMatche {
 
   async addMatch(dataMatch: IAddNewMatch, _teamService: IServiceTeam)
     : Promise<Matche | IErrorService > {
-    // const data = await teamService.readListIds([dataMatch.homeTeamId, dataMatch.awayTeamId]);
     const data = await this.modelMatch
       .findAll({ where: { id: [dataMatch.homeTeamId, dataMatch.awayTeamId] } });
 
@@ -48,5 +48,21 @@ export default class MatchService implements IServiceMatche {
       return result as Matche;
     }
     return { code: 404, message: 'There is no team with such id!', error: true } as IErrorService;
+  }
+
+  async finishMatch(id:number) {
+    await this.model.update(
+      { inProgress: false },
+      { where: { id } },
+    );
+    return true;
+  }
+
+  async updateMatch(id:number, keysValues: ISetGoals) {
+    await this.model.update(
+      keysValues,
+      { where: { id } },
+    );
+    return true;
   }
 }

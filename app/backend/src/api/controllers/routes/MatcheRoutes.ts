@@ -21,7 +21,7 @@ matcheRoutes.post(
   async (req: Request, res: Response) => matcheController.addMatch(req, res),
 );
 
-/* matcheRoutes.patch(
+matcheRoutes.patch(
   '/matches/:id/finish',
   Middlawares.tokenValidate,
   async (req: Request, res: Response) => matcheController.finishMatch(req, res),
@@ -31,6 +31,6 @@ matcheRoutes.patch(
   '/matches/:id',
   Middlawares.tokenValidate,
   async (req: Request, res: Response) => matcheController.updateMatch(req, res),
-); */
+);
 
 export default matcheRoutes;

@@ -36,7 +36,6 @@ export default class Middlawares {
         .json({ message: 'It is not possible to create a match with two equal teams' });
     }
 
-    console.log(`${awayTeamId} -- ${homeTeamId}`);
     next();
   }
 }
