@@ -1,5 +1,5 @@
 export default interface IMatche {
-  int: number | undefined;
+  id: number | undefined;
   homeTeamId: number;
   homeTeamGoals: number;
   awayTeamId: number;

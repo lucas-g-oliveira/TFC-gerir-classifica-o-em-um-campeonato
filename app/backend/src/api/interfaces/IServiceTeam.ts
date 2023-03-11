@@ -5,4 +5,5 @@ import IErrorService from './IErrorService';
 export default interface IServiceTeam {
   readAll(): Promise<Team[]>;
   readById(id:number): Promise<Team | IErrorService>
+  readListIds(ids:Array<number>): Promise<Team[]>
 }

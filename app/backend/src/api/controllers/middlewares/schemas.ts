@@ -5,4 +5,12 @@ const loginParamsValidate = Joi.object().keys({
   password: Joi.string().required(),
 });
 
-export default { loginParamsValidate };
+const addMatch = Joi.object().keys({
+  homeTeamId: Joi.number().min(0).required(),
+  awayTeamId: Joi.number().min(0).required(),
+  homeTeamGoals: Joi.number().min(0).required(),
+  awayTeamGoals: Joi.number().min(0).required(),
+  currentUserId: Joi.number().min(0).required(),
+});
+
+export default { loginParamsValidate, addMatch };

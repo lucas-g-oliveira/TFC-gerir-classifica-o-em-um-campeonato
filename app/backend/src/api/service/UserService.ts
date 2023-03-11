@@ -12,7 +12,9 @@ export default class UserService implements IServiceUser {
   protected model: ModelStatic<User> = User;
 
   async logIn(user: IUserLogin): Promise<IErrorService | IUserCrededential> {
-    const errorResult:IErrorService = { code: 401, message: invalidEmailOrPassword, error: true };
+    const errorResult:IErrorService = {
+      code: 401, message: invalidEmailOrPassword, error: true, id: false,
+    };
     const { email, password } = user;
 
     if (password.length < 6) return errorResult;

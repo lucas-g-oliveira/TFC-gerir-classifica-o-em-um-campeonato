@@ -25,8 +25,7 @@ export default class UserController {
   } */
 
   async getHole(req:Request, res: Response) {
-    console.log(req.body);
-    const data = await this._service.getHole(req.body.id);
+    const data = await this._service.getHole(req.body.currentUserId);
     return res.status(200).json({ role: data });
   }
 }

@@ -10,13 +10,13 @@ const userController = new UserController(userService);
 userRoutes.post(
   '/login',
   Middlawares.loginArgsValidate,
-  (req: Request, res: Response) => userController.logIn(req, res),
+  async (req: Request, res: Response) => userController.logIn(req, res),
 );
 
 userRoutes.get(
   '/login/role',
   Middlawares.tokenValidate,
-  (req: Request, res: Response) => userController.getHole(req, res),
+  async (req: Request, res: Response) => userController.getHole(req, res),
 );
 
 export default userRoutes;
