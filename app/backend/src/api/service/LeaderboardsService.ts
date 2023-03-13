@@ -54,7 +54,7 @@ export default class LeaderboardsService implements ILeaderBoardService {
   }
 
   private static dataTable(arr:IGameStatsToTeam[]) {
-    const teamsIds = [...new Set(arr.map((e):number => e.id))]; //
+    const teamsIds = [...new Set(arr.map((e):number => e.id))];
     const currTeam = (t:number) => arr.filter((j) => j.id === t);
     const effici = (t:number) => (
       (currTeam(t).reduce((a, c) => a + c.score, 0) / (currTeam(t).length * 3)) * 100).toFixed(2);
