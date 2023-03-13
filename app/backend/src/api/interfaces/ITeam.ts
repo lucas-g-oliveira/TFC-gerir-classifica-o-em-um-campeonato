@@ -1,4 +1,4 @@
 export default interface ITeam {
-  int: number | undefined
+  id: number | undefined
   teamName: string;
 }

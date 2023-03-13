@@ -11,7 +11,6 @@ const ID_NOT_FOUND = 'ID não existe';
 
 export default class MatchService implements IServiceMatche {
   protected model: ModelStatic<Matche> = Matche;
-  protected modelMatch: ModelStatic<Matche> = Matche;
 
   async readAll(): Promise<Matche[]> {
     const data = await this.model.findAll({
@@ -38,7 +37,7 @@ export default class MatchService implements IServiceMatche {
 
   async addMatch(dataMatch: IAddNewMatch, _teamService: IServiceTeam)
     : Promise<Matche | IErrorService > {
-    const data = await this.modelMatch
+    const data = await this.model
       .findAll({ where: { id: [dataMatch.homeTeamId, dataMatch.awayTeamId] } });
 
     if (data.length === 2) {
