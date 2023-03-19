@@ -19,8 +19,8 @@ export default class TeamService implements IServiceTeam {
     return data as Team;
   }
 
-  async readListIds(ids:Array<number>): Promise<Team[]> {
+/*   async readListIds(ids:Array<number>): Promise<Team[]> {
     const data = await this.model.findAll({ where: { id: [...ids] } });
     return data as Team[];
-  }
+  } */
 }
