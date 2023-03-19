@@ -3,8 +3,6 @@ import * as chai from "chai";
 // @ts-ignore
 import chaiHttp = require("chai-http");
 
-import { app } from "../app";
-// import Example from '../database/models/ExampleModel';
 import Team from "../database/models/Team";
 import Matche from "../database/models/Matche";
 import mockTeams from "./mocks/mocksTeams";
@@ -14,7 +12,6 @@ import mockWayTeamStatus from "./mocks/mockleaderboardAway";
 import mockHomeTeamStatus from "./mocks/mockleaderboardHome";
 
 import LeaderBorderService from "../api/service/LeaderboardsService";
-import IMatchWithTeamEager from "../api/interfaces/IMatchWithTeamEager";
 
 const { expect } = chai;
 
@@ -24,8 +21,6 @@ describe("Testa a service leaderboard", () => {
   });
 
   it('Verifica se as funçoes da service leadeboard retorna os resultados conforme esperado', async function () {
-    // const mock: Team[] = mockTeams;
-
     sinon.stub(Team, 'findAll').resolves(mockTeams as Team[]);
     sinon.stub(Matche, 'findAll').resolves(mockMatches as Matche[]);
 

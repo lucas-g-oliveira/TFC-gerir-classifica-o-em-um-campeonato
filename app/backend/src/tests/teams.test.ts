@@ -8,9 +8,7 @@ import { app } from "../app";
 import Team from "../database/models/Team";
 import mockTeams from "./mocks/mocksTeams";
 
-import { Response } from "superagent";
 import TeamService from "../api/service/TeamService";
-import ITeam from "../api/interfaces/ITeam";
 
 chai.use(chaiHttp);
 

@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import JWTOKEN from '../../utils/JWTOKEN';
-// import BCRYPT from '../../utils/BCRYPT';
 import IServiceUser from '../interfaces/IServiceUser';
 
 export default class UserController {
@@ -18,11 +17,6 @@ export default class UserController {
     const encrypt = JWTOKEN.encript(data);
     return res.status(200).json({ token: encrypt });
   }
-
-  /* signIn(req: Request, res: Response) {
-    console.log(req.body);
-    return res.status(201).json({ route: 'signIn' });
-  } */
 
   async getHole(req:Request, res: Response) {
     const data = await this._service.getHole(req.body.currentUserId);
