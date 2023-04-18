@@ -1,4 +1,4 @@
-# TFC - Gerenciamento de classificação de um campeonato.
+# TFC - Gerenciamento de classificação de um campeonato. (backend)
 ### `POO | Typescript | MongoDB | Mongoose | Mocha | Chai | Sinon | Docker | Express | Joi | JWT | BCript`
 <br>
 O TFC é um sistema de gerenciamento de campeonado onde é possível adicionar novos jogos, finalizar e alterar placares de partidas em andamento, e ver as classificações por visitantes, times da casa ou geral. Tudo feito a partir de informações básicas da partida.
